@@ -1,0 +1,39 @@
+from random import choice
+card_options = [1,2,3,4,5,6,7,8,9,'J','Q','K','A']
+drawn_cards = []
+
+def draw_card(card_options):
+	while True:
+		drawn_card = choice(card_options)
+		drawn_cards.append(drawn_card)
+		print(f"\nYou've just drawn a {drawn_card}")
+		redraw = input('Would you like to draw another card (y/n)? ')
+		if redraw.lower() == 'n':
+			break
+
+def calculate_bljkhand(drawn_cards):
+    """Calculate the sum of the cards in the hand."""
+    hand_total = 0
+    num_aces = []
+    for card in drawn_cards:
+        if card in ['J', 'Q', 'K']:
+            card = 10
+        elif card == 'A':
+        	num_aces.append('A')
+        	card = 0
+        hand_total += card
+
+    for ace in num_aces:
+    	if hand_total >= 11:
+    		hand_total += 1
+    	else:
+    		hand_total += 11
+
+    if hand_total <=21:
+    	print(f"Your hand totals {hand_total} .")
+    else:
+    	print(f"Your hand totals {hand_total} - you lost!")
+
+
+draw_card(card_options)
+calculate_bljkhand(drawn_cards)
