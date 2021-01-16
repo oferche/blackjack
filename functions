@@ -3,10 +3,11 @@ card_options = [1,2,3,4,5,6,7,8,9,'J','Q','K','A']
 drawn_cards = []
 
 def draw_card(card_options):
+	"""Randomly draws a card, then asks if user wants to draw another card."""
 	while True:
 		drawn_card = choice(card_options)
 		drawn_cards.append(drawn_card)
-		print(f"\nYou've just drawn a {drawn_card}")
+		print(f"\nThe card you've drawn is: {drawn_card}")
 		redraw = input('Would you like to draw another card (y/n)? ')
 		if redraw.lower() == 'n':
 			break
